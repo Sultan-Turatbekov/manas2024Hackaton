@@ -3,6 +3,7 @@ import { Instagram } from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { LogIn } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
 export const Header = () => {
     return (
         <>
@@ -36,7 +37,7 @@ export const Header = () => {
                             <li className='text-white text-[14px]  cursor-pointer'>КАК ПОСТУПИТЬ</li>
                             <li className='text-white text-[14px]  cursor-pointer'>СТУДЕНЧЕСКАЯ ЖИЗНЬ</li>
                             <li className='text-white text-[14px]  cursor-pointer'>
-                                <Link to={'student/registration'}>ПОДАТЬ ДОКУМЕНТЫ</Link>
+                                <Link to={`student/registration`}>ПОДАТЬ ДОКУМЕНТЫ</Link>
                             </li>
                             <li className="flex text-white text-[14px]  cursor-pointer gap-1"><LogIn
                                 style={{color: "white"}}/>LOG IN

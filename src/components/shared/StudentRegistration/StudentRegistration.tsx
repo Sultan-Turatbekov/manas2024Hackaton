@@ -53,11 +53,12 @@ export const StudentRegistration = () => {
     };
 
     return (
-        <div className={`mx-auto`}>
-            <form className={`flex flex-col gap-2 w-[400px] mx-auto`} onSubmit={handleSubmit}>
+        <div className={`mx-auto relative top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[50%]`}>
+            <form className={`flex flex-col gap-2 max-w-[500px] w-full mx-auto p-3 shadow rounded bg-slate-300`} onSubmit={handleSubmit}>
                 <Input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} />
                 <Input type="text" placeholder="Surname" value={surname} onChange={(e)=>setSurname(e.target.value)} />
                 <Input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+
                 <div className={`flex gap-10`}>
                     <div className="grid w-full max-w-sm items-center gap-1.5">
                         <Label htmlFor="frontPicture">Фронтальная часть</Label>
@@ -69,7 +70,7 @@ export const StudentRegistration = () => {
                     </div>
                 </div>
                 <div className={`flex gap-10`}>
-                    <div className={'mt-auto'}>
+                    <div className={'mt-auto w-1/2'}>
                         <Select value={select}>
                             <SelectTrigger className="">
                                 <SelectValue placeholder="Выберите" />
@@ -83,8 +84,8 @@ export const StudentRegistration = () => {
                         </Select>
                     </div>
 
-                    <div className="grid w-full max-w-sm items-center gap-1.5">
-                        <Label htmlFor="documentPhoto">Фотография документа</Label>
+                    <div className="grid w-1/2 max-w-sm items-center gap-1.5">
+                        <Label htmlFor="documentPhoto">Фото</Label>
                         <Input id="documentPhoto" type="file" onChange={handleChangeDocumentPhoto} />
                     </div>
                 </div>
