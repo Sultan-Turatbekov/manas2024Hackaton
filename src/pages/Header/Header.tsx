@@ -39,8 +39,13 @@ export const Header = () => {
                             <li className='text-white text-[14px]  cursor-pointer'>
                                 <Link to={`student/registration`}>ПОДАТЬ ДОКУМЕНТЫ</Link>
                             </li>
-                            <li className="flex text-white text-[14px]  cursor-pointer gap-1"><LogIn
-                                style={{color: "white"}}/>LOG IN
+                            <li className="flex  text-white text-[14px]  cursor-pointer gap-1">
+                                <Link className={`flex gap-1 items-center`} to={'student/login'}>
+                                    <LogIn
+                                    style={{color: "white"}} className={'block'}/>
+                                    <span className={'block'}>LOG IN</span>
+                                </Link>
+
                             </li>
 
                         </ul>
