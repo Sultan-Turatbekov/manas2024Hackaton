@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 
-export const AdminLogin = () => {
+export const SisAdminLogin = () => {
     return (
         <div>
-            Admin login
+            SisAdmin login
             <Link to={'/'}></Link>
         </div>
     )
