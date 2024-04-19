@@ -3,7 +3,6 @@ import { Label } from "../../ui/label"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectItem } from "../../ui/select"
 import { Button } from "@/src/components/ui/button.tsx";
 import { useState } from "react";
-
 export const StudentRegistration = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -13,8 +12,7 @@ export const StudentRegistration = () => {
     const [select, setSelect] = useState('HAGHA');
     const [documentPhoto, setDocumentPhoto] = useState<File | null>(null);
     const [phoneNumber, setPhoneNumber] = useState('');
-
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e:any) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('name', name);
@@ -32,24 +30,21 @@ export const StudentRegistration = () => {
             formData.append('documentPhoto', documentPhoto);
         }
     };
-
-    const handleChangeFrontPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeFrontPicture = (e:any) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setFrontPicture(file);
         }
     };
-
-    const handleChangeBackPicture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeBackPicture = (e:any) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setBackPicture(file);
         }
     };
-
-    const handleChangeDocumentPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeDocumentPhoto = (e:any) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
