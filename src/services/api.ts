@@ -1,10 +1,10 @@
 import axios from 'axios'
-const baseURL = 'http://35.232.168.91:8072/avionix'
+const baseURL = 'http://192.168.100.195:5000/api/'
 
 const client = axios.create({
     baseURL,
     headers: {
-        'Content-Type': 'multipart/form-data',
+        'Content-Type': 'application/json',
     },
 })
 

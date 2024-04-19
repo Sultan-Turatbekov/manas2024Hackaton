@@ -2,7 +2,8 @@ import { Input } from "../../ui/input"
 import { Label } from "../../ui/label"
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectItem } from "../../ui/select"
 import { Button } from "@/src/components/ui/button.tsx";
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import ApiFetch from "@/src/services/authorization.ts";
 export const StudentRegistration = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
@@ -51,6 +52,13 @@ export const StudentRegistration = () => {
             setDocumentPhoto(file);
         }
     };
+    useEffect(() => {
+        const fetchData = async () => {
+            const departments = await ApiFetch.getDepartments()
+            console.log(departments)
+        }
+        fetchData();
+    }, []);
 
     return (
         <div className={`mx-auto relative top-1/2 left-1/2 transform translate-x-[-50%] translate-y-[50%]`}>

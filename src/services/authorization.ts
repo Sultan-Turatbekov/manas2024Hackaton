@@ -2,13 +2,26 @@ import {client} from "./api.ts";
 import axios from 'axios';
 
 
-const AUTH_URL = '/client/api/'
 
 class Authorization {
-    async checkEmail(email:any) {
-        const params = { email: email };
+    async registerStudent(data) {
         try {
-            const response = await client.get(AUTH_URL + 'account/checkEmail', { params });
+            const response = await client.post('');
+            return response.status;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
+    async getDepartments() {
+        try {
+            const response = await client.get('Test/GetAllDepartmenst/');
+            console.log(response)
             return response.status;
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -22,6 +35,6 @@ class Authorization {
 
 }
 
-const AuthorizationService = new Authorization()
+const ApiFetch = new Authorization()
 
-export default AuthorizationService;
+export default ApiFetch;
