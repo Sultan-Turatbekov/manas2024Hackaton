@@ -23,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="student/*" element={<Student />} />
                   <Route path="sisAdmin/*" element={<SisAdmin />} />
                   <Route path="*" element={<NotFoundPage />} />
+
               </Route>
           </Routes>
       </BrowserRouter>
