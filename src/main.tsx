@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {App} from "@/src/App.tsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {LogIn} from "@/src/pages/LogIn/LogIn.tsx";
+import {LogIn} from "@/src/components/shared/Login/Login.tsx";
 import {Home} from "@/src/pages/Home/Home.tsx";
 import {NotFoundPage} from "@/src/pages/NotFoundPage/NotFoundPage.tsx";
 import {Admin} from "@/src/routes/Admin.tsx";

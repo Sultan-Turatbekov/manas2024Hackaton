@@ -3,7 +3,7 @@ import {Input} from "@/src/components/ui/input.tsx";
 import {Button} from "@/src/components/ui/button.tsx";
 import {useState} from "react";
 
-export const StudentLogin = () => {
+export const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleSubmit = async (e) => {
