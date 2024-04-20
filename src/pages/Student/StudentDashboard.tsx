@@ -1,22 +1,13 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useState} from "react";
+import {ExamTable} from "@/src/components/shared/ExamTable/ExamTable.tsx";
+import {GradeTable} from "@/src/components/shared/GradeTable/GradeTable.tsx"
 export const StudentDashboard = () => {
-    const navigate = useNavigate();
-    const token = true;
 
-    useEffect(() => {
-        if (!token) {
-            navigate('login');
-        }
-    }, [navigate, token]);
-
-    // Состояние для отслеживания открытия или закрытия дива
     const [isDivOpen, setIsDivOpen] = useState(true);
     const [isExamOpen,setIsExamOpen]=useState(false)
     const [isGradeOpen,setIsGradeOpen]=useState(false)
-    // Функция для переключения состояния открытия дива
+
+
     const toggleDiv = () => {
         setIsDivOpen(true);
         setIsExamOpen(false);
@@ -32,7 +23,6 @@ export const StudentDashboard = () => {
         setIsExamOpen(false);
         setIsGradeOpen(true)
     };
-
 
     return (
         <div>
@@ -50,7 +40,9 @@ export const StudentDashboard = () => {
                 <div className=" items-center mt-[100px]">
                     <h2 className="text-[40px] font-bold text-[#174496]">Контактная информация</h2>
                     <div className="flex flex-wrap justify-between gap-3  ">
-                        <div className="flex flex-col w-[calc(33.33%-10px)]">
+
+
+                        <div  className="flex flex-col w-[calc(33.33%-10px)]">
                             <p className="text-[14px] text-[#959595] ">Фамилия</p>
                             <input placeholder="Фамилия"
                                    className="w-full py-[12px] px-[25px] border-[1px] border-[#174496] rounded-[8px]"/>
@@ -80,7 +72,6 @@ export const StudentDashboard = () => {
                             <input placeholder="Год окончания учебного заведения"
                                    className="w-full py-[12px] px-[25px] border-[1px] border-[#174496] rounded-[8px]"/>
                         </div>
-
                     </div>
                     <div className="flex flex-col w-[calc(33.33%-10px)] mt-[100px]">
                         <h1 className="text-[28px] text-[#174496] font-bold">Имя пользователя</h1>
@@ -92,26 +83,14 @@ export const StudentDashboard = () => {
             )}
             {isExamOpen && (
                 <div className="flex items-center justify-center mt-8">
-                    <table className="border-collapse border border-gray-500">
-                        <tbody>
-                        {Array.from({length: 5}, (_, rowIndex) => (
-                            <tr key={rowIndex}>
-                                {Array.from({length: 5}, (_, colIndex) => (
-                                    <td key={`${rowIndex}-${colIndex}`}
-                                        className="border border-gray-500 p-2">{`${rowIndex}-${colIndex}`}</td>
-                                ))}
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
+                    <ExamTable/>
                 </div>
             )}
             {isGradeOpen && (
                 <div className="flex items-center justify-center bg-gray-200 h-20">
-                    Содержимое
+                    <GradeTable/>
                 </div>
             )}
-
         </div>
     );
 };

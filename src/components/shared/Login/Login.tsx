@@ -1,15 +1,23 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Input} from "@/src/components/ui/input.tsx";
 import {Button} from "@/src/components/ui/button.tsx";
 import {useState} from "react";
+import ApiFetch from "@/src/services/authorization.ts";
 
-export const StudentLogin = () => {
+export const LogIn = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {email, password}
-        console.log(data)
+        const response = await ApiFetch.logIn(data)
+        localStorage.setItem('token', response.accessToken)
+        localStorage.setItem('role', response.role)
+        if(localStorage.getItem('role')){
+            response.role === 'SECRETAR' ? navigate('/secretar') : navigate('/')
+        }
+        console.log(response)
     }
 
     return (

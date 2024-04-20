@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import {App} from "@/src/App.tsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {LogIn} from "@/src/pages/LogIn/LogIn.tsx";
+import {LogIn} from "@/src/components/shared/Login/Login.tsx";
 import {Home} from "@/src/pages/Home/Home.tsx";
 import {NotFoundPage} from "@/src/pages/NotFoundPage/NotFoundPage.tsx";
 import {Admin} from "@/src/routes/Admin.tsx";
 import {Student} from "@/src/routes/Student.tsx";
-import {SisAdmin} from "@/src/routes/SisAdmin.tsx";
+import {Secretar} from "@/src/routes/Secretar.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="login" element={<LogIn />} />
                   <Route path="admin/*" element={<Admin />} />
                   <Route path="student/*" element={<Student />} />
-                  <Route path="sisAdmin/*" element={<SisAdmin />} />
+                  <Route path="secretar/*" element={<Secretar />} />
                   <Route path="*" element={<NotFoundPage />} />
 
               </Route>
