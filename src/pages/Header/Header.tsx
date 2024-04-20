@@ -20,7 +20,7 @@ export const Header = () => {
                         </div>
                         <div className='flex items-center gap-2 w-[150px]'>
                             <img className='w-[198px] h-[98px]' src={logo} alt="logoManas"/>
-                            <p className='text-white text-[20px] font-bold cursor-pointer'>МАНАС УНИВЕРСИТЕТИ</p>
+                            <p className='text-white text-[20px] font-bold cursor-pointer'>УНИВЕРСИТЕТ МАНАС </p>
                         </div>
                         <div className="flex flex-col items-center">
                             <h3 className="text-[20px] text-white"> call-центр для приёма звонков</h3>
