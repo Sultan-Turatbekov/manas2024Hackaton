@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import {Input} from "@/src/components/ui/input.tsx";
 import {Button} from "@/src/components/ui/button.tsx";
 import {useState} from "react";
+import ApiFetch from "@/src/services/authorization.ts";
 
 export const LogIn = () => {
     const [email, setEmail] = useState('');
@@ -9,7 +10,8 @@ export const LogIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {email, password}
-        console.log(data)
+        const response = await ApiFetch.logIn(data)
+        console.log(response)
     }
 
     return (

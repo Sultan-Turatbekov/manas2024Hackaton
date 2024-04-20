@@ -18,6 +18,22 @@ class Authorization {
         }
     }
 
+    async logIn(data) {
+        console.log(data)
+        try {
+            const response = await fetch.post('Auth/Login', data);
+            console.log(response)
+            return response;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
     async getDepartments() {
         try {
             const response = await fetch.get('Test/GetAllDepartmenst/');
