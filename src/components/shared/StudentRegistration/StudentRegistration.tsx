@@ -4,10 +4,8 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectI
 import { Button } from "@/src/components/ui/button.tsx";
 import {useEffect, useState} from "react";
 import ApiFetch from "@/src/services/authorization.ts";
-import { Calendar } from "../../ui/calendar";
-import {Checkbox} from "@/src/components/ui/checkbox.tsx";
 import React from "react";
-import {number} from "zod";
+import {useNavigate} from "react-router-dom";
 export const StudentRegistration = () => {
     const [departments, setDepartments] = useState([])
     const [name, setName] = useState('');
@@ -19,7 +17,8 @@ export const StudentRegistration = () => {
     const [documentPhoto, setDocumentPhoto] = useState<File | null>(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState('')
-    const handleSubmit = async (e:any) => {
+    const navigate = useNavigate()
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('FirstName', name);
@@ -39,24 +38,26 @@ export const StudentRegistration = () => {
         }
         const registationStudent = async () => {
             const res = await ApiFetch.registerStudent(formData)
+            console.log(res);
+            res === 200 ? navigate('/') : null
         }
         registationStudent()
     };
-    const handleChangeFrontPicture = (e:any) => {
+    const handleChangeFrontPicture = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setFrontPicture(file);
         }
     };
-    const handleChangeBackPicture = (e:any) => {
+    const handleChangeBackPicture = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setBackPicture(file);
         }
     };
-    const handleChangeDocumentPhoto = (e:any) => {
+    const handleChangeDocumentPhoto = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
