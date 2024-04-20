@@ -1,4 +1,4 @@
-import {client} from "./api.ts";
+import {client, fetch} from "./api.ts";
 import axios from 'axios';
 
 
@@ -6,8 +6,8 @@ import axios from 'axios';
 class Authorization {
     async registerStudent(data) {
         try {
-            const response = await client.post('');
-            return response.status;
+            const response = await client.post('Auth/register', data);
+            return response;
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error.response?.status);
@@ -20,9 +20,9 @@ class Authorization {
 
     async getDepartments() {
         try {
-            const response = await client.get('Test/GetAllDepartmenst/');
+            const response = await fetch.get('Test/GetAllDepartmenst/');
             console.log(response)
-            return response.status;
+            return response.data
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error.response?.status);

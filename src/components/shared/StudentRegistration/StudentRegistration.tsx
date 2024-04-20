@@ -4,32 +4,43 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectI
 import { Button } from "@/src/components/ui/button.tsx";
 import {useEffect, useState} from "react";
 import ApiFetch from "@/src/services/authorization.ts";
+import { Calendar } from "../../ui/calendar";
+import {Checkbox} from "@/src/components/ui/checkbox.tsx";
+import React from "react";
+import {number} from "zod";
 export const StudentRegistration = () => {
+    const [departments, setDepartments] = useState([])
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [email, setEmail] = useState('');
     const [frontPicture, setFrontPicture] = useState<File | null>(null);
     const [backPicture, setBackPicture] = useState<File | null>(null);
-    const [select, setSelect] = useState('HAGHA');
+    const [select, setSelect] = useState<number>(1);
     const [documentPhoto, setDocumentPhoto] = useState<File | null>(null);
     const [phoneNumber, setPhoneNumber] = useState('');
+    const [date, setDate] = useState('')
     const handleSubmit = async (e:any) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('name', name);
-        formData.append('surname', surname);
-        formData.append('email', email);
-        formData.append('select', select);
-        formData.append('phoneNumber', phoneNumber);
+        formData.append('FirstName', name);
+        formData.append('LastName', surname);
+        formData.append('Email', email);
+        formData.append('DepartmentId', select);
+        formData.append('PhoneNumber', phoneNumber);
+        formData.append('DoB', date);
         if (frontPicture) {
-            formData.append('frontPicture', frontPicture);
+            formData.append('PassportFront', frontPicture);
         }
         if (backPicture) {
-            formData.append('backPicture', backPicture);
+            formData.append('PassportBack', backPicture);
         }
         if (documentPhoto) {
-            formData.append('documentPhoto', documentPhoto);
+            formData.append('DiplomImage', documentPhoto);
         }
+        const registationStudent = async () => {
+            const res = await ApiFetch.registerStudent(formData)
+        }
+        registationStudent()
     };
     const handleChangeFrontPicture = (e:any) => {
         const files = e.target.files;
@@ -56,6 +67,7 @@ export const StudentRegistration = () => {
         const fetchData = async () => {
             const departments = await ApiFetch.getDepartments()
             console.log(departments)
+            setDepartments(departments)
         }
         fetchData();
     }, []);
@@ -66,34 +78,55 @@ export const StudentRegistration = () => {
                 <Input type="text" placeholder="Name" value={name} onChange={(e)=>setName(e.target.value)} />
                 <Input type="text" placeholder="Surname" value={surname} onChange={(e)=>setSurname(e.target.value)} />
                 <Input type="email" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <div className={'flex gap-10 my-2'}>
+                    <div className={`flex flex-col w-1/2 mt-auto gap-2`}>
+                        <Label>Дата рождения</Label>
+                        <input onChange={(e)=>setDate(new Date(e.target.value))} className={`rounded h-[38px] p-4`} type="date"/>
+                    </div>
 
+                    <div className={'flex flex-col w-1/2 mt-auto gap-2'}>
+                        <Label>Выберите</Label>
+                        <Select>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Выберите отдел"/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectItem value={`магистратура`}>Магистратура</SelectItem>
+                                    <SelectItem value={`доктарантура`}>Доктарантура</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+
+                </div>
                 <div className={`flex gap-10`}>
                     <div className="grid w-full max-w-sm items-center gap-1.5">
-                        <Label htmlFor="frontPicture">Фронтальная часть</Label>
-                        <Input id="frontPicture" type="file" onChange={handleChangeFrontPicture} />
+                        <Label htmlFor="frontPicture">Фронтальная часть паспорта</Label>
+                        <Input id="frontPicture" type="file" onChange={handleChangeFrontPicture}/>
                     </div>
                     <div className="grid w-full max-w-sm items-center gap-1.5">
-                        <Label htmlFor="backPicture">Задняя часть</Label>
-                        <Input id="backPicture" type="file" onChange={handleChangeBackPicture} />
+                        <Label htmlFor="backPicture">Задняя часть паспорта</Label>
+                        <Input id="backPicture" type="file" onChange={handleChangeBackPicture}/>
                     </div>
                 </div>
                 <div className={`flex gap-10`}>
                     <div className={'mt-auto w-1/2'}>
-                        <Select value={select}>
-                            <SelectTrigger className="">
-                                <SelectValue placeholder="Выберите" />
+                        <Label htmlFor="documentPhoto">Выберите отдел</Label>
+                        <Select>
+                            <SelectTrigger>
+                                <SelectValue placeholder="Выберите отдел" />
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectGroup>
-                                    <SelectItem  onClick={()=>setSelect('Магистратура')} value="Магистратура">Магистратура</SelectItem>
-                                    <SelectItem  onClick={()=>setSelect('Доктарантура')} value="Доктарантура">Доктарантура</SelectItem>
+                                    {departments && departments.map(item => <SelectItem key={item.id} onClick={()=>setSelect(item.id)} value={`${item.name}`}>{item.name}</SelectItem>)}
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
                     </div>
 
                     <div className="grid w-1/2 max-w-sm items-center gap-1.5">
-                        <Label htmlFor="documentPhoto">Фото</Label>
+                        <Label htmlFor="documentPhoto">Фото диплома</Label>
                         <Input id="documentPhoto" type="file" onChange={handleChangeDocumentPhoto} />
                     </div>
                 </div>
