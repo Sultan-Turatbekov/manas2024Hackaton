@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import ApiFetch from "@/src/services/authorization.ts";
 
 export const ComissionDashBoard = () => {
