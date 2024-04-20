@@ -1,9 +1,10 @@
 import DB from './Magistr.json'
 import {IMagistr} from '@/src/lib/types/IMagistr.ts'
 export const Magistr = () => {
+
     return (
         <>
-            <h2 className="text-[40px] font-bold text-[#174496] mt-[150px] ">Как поступить в магистратуру МАНАС?</h2>
+            <h2 className="text-[40px] font-bold text-[#174496] mt-[100px] ">Как поступить в магистратуру МАНАС?</h2>
             <div  className=" flex gap-5 justify-between  mt-[90px]  ">
                 {
                     DB.map((item:IMagistr,index:number)=>(
