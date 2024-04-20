@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import ApiFetch from "@/src/services/authorization.ts";
-import {Label} from "@/src/components/ui/label.tsx";
-import {Input} from "@/src/components/ui/input.tsx";
 
 export const SecretarExamDetails = () => {
     const params = useParams()

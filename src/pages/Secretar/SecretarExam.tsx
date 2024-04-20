@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import ApiFetch from "@/src/services/authorization.ts";
 import {convertDate} from "@/src/services/timeConverter.ts";
-import {Button} from "@/src/components/ui/button.tsx";
 import {Link, useNavigate} from "react-router-dom";
 import {SquareArrowRight} from "lucide-react";
 

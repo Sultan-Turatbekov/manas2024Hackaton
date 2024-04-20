@@ -3,7 +3,6 @@ import ApiFetch from "@/src/services/authorization.ts";
 
 export const ComissionDashBoard = () => {
     const token = localStorage.getItem('token')
-    const [examsId, setExamsId] = useState([])
     useEffect(() => {
 
         const fetchData = async () => {
