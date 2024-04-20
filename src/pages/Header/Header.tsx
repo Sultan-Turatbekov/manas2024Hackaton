@@ -15,7 +15,7 @@ export const Header = () => {
         <>
             <div className='relative w-full h-[500px]'>
                 <div className='absolute top-0 left-0 w-full h-full z-[-2] size-full'>
-                    <img className={`size-full object-cover z-[-2]`} src="@/public/assets/banner.jpg" alt="dfsdfsd"/>
+                    <img className={`size-full object-cover z-[-2]`} src="./assets/banner.jpg" alt="dfsdfsd"/>
                     <div className={`absolute top-0 size-full bg-black opacity-[0.6] z-[2]`}></div>
                 </div>
                 <div className='w-full mx-auto relative p-6 font-bold '>
