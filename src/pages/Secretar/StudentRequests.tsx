@@ -53,7 +53,7 @@ export const StudentRequests = () => {
                 <p className={`text-3xl text-center`}>Это старница управления секретаря</p>
             </div>
             <Accordion type="single" collapsible className={'mt-5'}>
-                {data && data.map((item: any, index: number) => (
+                {data && data.map((item, index: number) => (
                     <AccordionItem key={index} value={`item-${index+1}`}>
                         <AccordionTrigger className={`text-2xl border-2 border-red-500 rounded-2xl p-4 my-2`}>{item.firstName} {item.lastName}</AccordionTrigger>
                         <AccordionContent className={`flex justify-center mt-10 flex-col items-center gap-10`}>

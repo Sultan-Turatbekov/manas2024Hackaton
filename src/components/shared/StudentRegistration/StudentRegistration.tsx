@@ -18,7 +18,7 @@ export const StudentRegistration = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState('')
     const navigate = useNavigate()
-    const handleSubmit = async (e:any) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('FirstName', name);
@@ -43,21 +43,21 @@ export const StudentRegistration = () => {
         }
         registationStudent()
     };
-    const handleChangeFrontPicture = (e:any) => {
+    const handleChangeFrontPicture = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setFrontPicture(file);
         }
     };
-    const handleChangeBackPicture = (e:any) => {
+    const handleChangeBackPicture = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
             setBackPicture(file);
         }
     };
-    const handleChangeDocumentPhoto = (e:any) => {
+    const handleChangeDocumentPhoto = (e) => {
         const files = e.target.files;
         if (files && files.length > 0) {
             const file = files[0];
