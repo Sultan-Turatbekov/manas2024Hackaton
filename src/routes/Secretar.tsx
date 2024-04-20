@@ -1,8 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import {NotFoundPage} from "@/src/pages/NotFoundPage/NotFoundPage.tsx";
 import {SecretarRoutes} from "@/src/routes/SecretarRoutes.tsx";
-import {SecretarDashboard, StudentRequests} from "@/src/pages/Secretar/StudentRequests.tsx";
-import {StudentRoutes} from "@/src/routes/StudentRoutes.tsx";
+import {StudentRequests} from "@/src/pages/Secretar/StudentRequests.tsx";
 import {SecretarExam} from "@/src/pages/Secretar/SecretarExam.tsx";
 
 export const Secretar = () => {

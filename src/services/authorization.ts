@@ -50,7 +50,6 @@ class Authorization {
     }
 
     async accept(token, id) {
-        const ID = parseInt(id)
         try {
             const response = await fetch.post('Secretar/AccesptStatement',{statementId: id},{headers:{'Authorization' : `Bearer ${token}`}});
             return response.status;

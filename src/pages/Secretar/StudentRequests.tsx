@@ -8,7 +8,6 @@ import {
 import ApiFetch from "@/src/services/authorization.ts";
 import {Button} from "@/src/components/ui/button.tsx";
 import {X} from "lucide-react";
-import {localeToNumber} from "date-fns/locale/hi/_lib/localize";
 
 export const StudentRequests = () => {
     const [data, setData] = useState([])

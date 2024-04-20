@@ -4,10 +4,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectI
 import { Button } from "@/src/components/ui/button.tsx";
 import {useEffect, useState} from "react";
 import ApiFetch from "@/src/services/authorization.ts";
-import { Calendar } from "../../ui/calendar";
-import {Checkbox} from "@/src/components/ui/checkbox.tsx";
 import React from "react";
-import {number} from "zod";
 import {useNavigate} from "react-router-dom";
 export const StudentRegistration = () => {
     const [departments, setDepartments] = useState([])
