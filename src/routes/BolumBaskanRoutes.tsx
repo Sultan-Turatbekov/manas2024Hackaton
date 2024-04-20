@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 
-export const SisAdminRoutes = () => {
+export const BolumBaskanRoutes = () => {
 
     return <Outlet/>;
 }

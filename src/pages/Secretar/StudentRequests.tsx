@@ -48,10 +48,8 @@ export const StudentRequests = () => {
     }, []);
 
     return (
-        <div className={`py-10`}>
-            <div>
-                <p className={`text-3xl text-center`}>Это старница управления секретаря</p>
-            </div>
+        <div className={`py-5`}>
+            <p>Заявки на поступление</p>
             <Accordion type="single" collapsible className={'mt-5'}>
                 {data && data.map((item, index: number) => (
                     <AccordionItem key={index} value={`item-${index+1}`}>
@@ -69,14 +67,14 @@ export const StudentRequests = () => {
                                 <div className={`flex gap-10`}>
                                     <p className={`text-xl ml-2 font-[600]`}>Паспортные данные:</p>
                                     <div className={`flex gap-10`}>
-                                        <img src={item.passportFrontImage} onClick={() => openModal(item.passportFrontImage)} alt={item.firstName}/>
-                                        <img src={item.passportBackImage} onClick={() => openModal(item.passportFrontImage)} alt={item.lastName}/>
+                                        <img className={`w-[100px] h-[100px]`} src={item.passportFrontImage} onClick={() => openModal(item.passportFrontImage)} alt={item.firstName}/>
+                                        <img className={`w-[100px] h-[100px]`} src={item.passportBackImage} onClick={() => openModal(item.passportFrontImage)} alt={item.lastName}/>
                                     </div>
                                 </div>
                                 <div className={`flex gap-10 ml-[125px] font-[600]`}>
                                     <p className={`text-xl`}>Диплом:</p>
                                     <div>
-                                        <img src={item.diplomImage} onClick={() => openModal(item.passportFrontImage)} alt="diplom"/>
+                                        <img className={`w-[100px] h-[100px]`} src={item.diplomImage} onClick={() => openModal(item.passportFrontImage)} alt="diplom"/>
                                     </div>
                                 </div>
                             </div>

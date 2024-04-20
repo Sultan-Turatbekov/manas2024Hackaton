@@ -8,8 +8,9 @@ import {DropdownMenuContent, DropdownMenuGroup, DropdownMenuTrigger } from '@/sr
 
 export const Header = () => {
     const navigate = useNavigate()
+    const role = localStorage.getItem('role')
     const handleProfile = () => {
-        localStorage.getItem('role') === 'SECRETAR' ? navigate('secretar') : '*'
+        role === 'SECRETAR' ? navigate('secretar') : role === 'STUDENT' ? navigate('student') : role === 'BOLUMBASKAN' ? navigate('bolumbaskan') : role === 'COMISSION' ? navigate('comission') : '*'
     }
     return (
         <>

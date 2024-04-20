@@ -18,6 +18,21 @@ class Authorization {
         }
     }
 
+    async createExam(data, token) {
+        try {
+            const response = await client.post('Exam/CreateExam', data, {headers:{'Authorization':`Bearer ${token}`}});
+            console.log(response)
+            return response;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
     async logIn(data) {
         console.log(data)
         try {
@@ -38,6 +53,21 @@ class Authorization {
 
         try {
             const response = await fetch.get('Secretar/GetAllStatementsBydepartment',{headers:{'Authorization' : `Bearer ${token}`}});
+            return response.data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
+    async getExamsById(token, id) {
+
+        try {
+            const response = await fetch.get(`Exam/GetSingleExamById?id=${id}`,{headers:{'Authorization' : `Bearer ${token}`}});
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -81,8 +111,34 @@ class Authorization {
     async getDepartments() {
         try {
             const response = await fetch.get('Test/GetAllDepartmenst/');
-            console.log(response)
             return response.data
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
+    async getGlobalExams(token) {
+        try {
+            const response = await fetch.get('Secretar/GetAllGlobalExamsBydepartment', {headers:{'Authorization' : `Bearer ${token}`}});
+            return response
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+    async getExamsById(token, id) {
+        try {
+            const response = await fetch.get(`Secretar/GetAllStudentsByGlobalExamId?id=${id}`, {headers: {'Authorization':`Bearer ${token}`}});
+            return response
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 console.error(error.response?.status);

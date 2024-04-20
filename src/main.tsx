@@ -9,6 +9,8 @@ import {NotFoundPage} from "@/src/pages/NotFoundPage/NotFoundPage.tsx";
 import {Admin} from "@/src/routes/Admin.tsx";
 import {Student} from "@/src/routes/Student.tsx";
 import {Secretar} from "@/src/routes/Secretar.tsx";
+import {BolumBaskan} from "@/src/routes/BolumBaskan.tsx";
+import {Comission} from "@/src/routes/Comission.tsx";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -20,6 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                   <Route path="admin/*" element={<Admin />} />
                   <Route path="student/*" element={<Student />} />
                   <Route path="secretar/*" element={<Secretar />} />
+                  <Route path="bolumbaskan/*" element={<BolumBaskan />} />
+                  <Route path="comission/*" element={<Comission />} />
                   <Route path="*" element={<NotFoundPage />} />
 
               </Route>
