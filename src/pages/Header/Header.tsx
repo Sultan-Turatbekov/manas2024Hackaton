@@ -58,7 +58,7 @@ export const Header = () => {
                                                     <span>Profile</span>
                                                 </DropdownMenuItem>
                                             </DropdownMenuGroup>
-                                            <DropdownMenuItem className={'cursor-pointer p-2'} onClick={()=>{localStorage.removeItem('token'); window.location.reload()}}>
+                                            <DropdownMenuItem className={'cursor-pointer p-2'} onClick={()=>{localStorage.removeItem('token'); localStorage.removeItem('role'); window.location.reload()}}>
                                                 <LogOut className="mr-2 h-4 w-4" />
                                                 <span>Log out</span>
                                             </DropdownMenuItem>

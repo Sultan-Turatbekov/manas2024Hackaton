@@ -8,6 +8,7 @@ import { Calendar } from "../../ui/calendar";
 import {Checkbox} from "@/src/components/ui/checkbox.tsx";
 import React from "react";
 import {number} from "zod";
+import {useNavigate} from "react-router-dom";
 export const StudentRegistration = () => {
     const [departments, setDepartments] = useState([])
     const [name, setName] = useState('');
@@ -19,6 +20,7 @@ export const StudentRegistration = () => {
     const [documentPhoto, setDocumentPhoto] = useState<File | null>(null);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [date, setDate] = useState('')
+    const navigate = useNavigate()
     const handleSubmit = async (e:any) => {
         e.preventDefault();
         const formData = new FormData();
@@ -39,6 +41,8 @@ export const StudentRegistration = () => {
         }
         const registationStudent = async () => {
             const res = await ApiFetch.registerStudent(formData)
+            console.log(res);
+            res === 200 ? navigate('/') : null
         }
         registationStudent()
     };
