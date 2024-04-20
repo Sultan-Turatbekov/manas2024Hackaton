@@ -23,6 +23,22 @@ class Authorization {
         try {
             const response = await fetch.post('Auth/Login', data);
             console.log(response)
+            return response.data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error(error.response?.status);
+                return error.response?.status;
+            } else {
+                throw error;
+            }
+        }
+    }
+
+    async studentRequests() {
+
+        try {
+            const response = await fetch.post('Auth/Login', data);
+            console.log(response)
             return response;
         } catch (error) {
             if (axios.isAxiosError(error)) {

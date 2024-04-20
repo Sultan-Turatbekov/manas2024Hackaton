@@ -1,10 +1,16 @@
 import logo from '../../../public/assets/logo2.png'
-import { Instagram } from 'lucide-react';
+import {Instagram, LogOut, User} from 'lucide-react';
 import { Facebook } from 'lucide-react';
 import { LogIn } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {DropdownMenu, DropdownMenuItem} from "@/src/components/ui/dropdown-menu.tsx";
+import {DropdownMenuContent, DropdownMenuGroup, DropdownMenuTrigger } from '@/src/components/ui/dropdown-menu';
 
 export const Header = () => {
+    const navigate = useNavigate()
+    const handleProfile = () => {
+        localStorage.getItem('role') === 'SECRETAR' ? navigate('secretar') : '*'
+    }
     return (
         <>
             <div className='relative w-full h-[500px]'>
@@ -40,11 +46,33 @@ export const Header = () => {
                                 <Link to={`student/registration`}>ПОДАТЬ ДОКУМЕНТЫ</Link>
                             </li>
                             <li className="flex  text-white text-[14px]  cursor-pointer gap-1">
-                                <Link className={`flex gap-1 items-center`} to={'login'}>
-                                    <LogIn
-                                    style={{color: "white"}} className={'block'}/>
-                                    <span className={'block'}>LOG IN</span>
-                                </Link>
+                                {localStorage.getItem('token') ?
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <User/>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-40">
+                                            <DropdownMenuGroup>
+                                                <DropdownMenuItem className={'cursor-pointer p-2'} onClick={handleProfile}>
+                                                    <User className="mr-2 h-4 w-4" />
+                                                    <span>Profile</span>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuGroup>
+                                            <DropdownMenuItem className={'cursor-pointer p-2'} onClick={()=>{localStorage.removeItem('token'); window.location.reload()}}>
+                                                <LogOut className="mr-2 h-4 w-4" />
+                                                <span>Log out</span>
+                                            </DropdownMenuItem>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+
+                                :
+                                    <Link className={`flex gap-1 items-center`} to={'login'}>
+                                        <LogIn
+                                            style={{color: "white"}} className={'block'}/>
+                                        <span className={'block'}>LOG IN</span>
+                                    </Link>
+                                }
+
 
                             </li>
 
